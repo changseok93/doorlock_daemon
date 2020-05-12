@@ -13,6 +13,7 @@
 1. clone repository and go to directory
 2. compile main.cpp with g++ compiler " g++ -o run main.cpp "
 3. excute "run" file " sudo ./run "
+use " sudo ./run & " for daemon process
 
 ## future work
 1. code optimization (sensor sampling rate ... )
