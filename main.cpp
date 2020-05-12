@@ -97,7 +97,7 @@ void drop_pin(int pin){
 void set_direction(int pin, std::string direction){
     std::stringstream s1;
     char* dummy = new char [direction.size()];
-    s1 << "/sys/class/gpio/gpio" << pin << "/value";
+    s1 << "/sys/class/gpio/gpio" << pin << "/direction";
     int fd = open(s1.str().c_str(), O_WRONLY);
     s1.str(""); // clear s1
     s1.clear(); // clear s1
