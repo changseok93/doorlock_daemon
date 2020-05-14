@@ -11,18 +11,18 @@ int get_value (int pin_num);
 
 
 int main(){
-    
+
     regist_pin(12);
     regist_pin(39);
     regist_pin(42);
     set_direction(12, "out");
     set_direction(39, "in");
     set_direction(42, "in");
-    
+
     std::cout << "pin12 : " << get_value(12) << std::endl;
     std::cout << "pin39 : " << get_value(39) << std::endl;
     std::cout << "pin42 : " << get_value(42) << std::endl;
-    
+
     return 0;
 
 }
@@ -41,7 +41,7 @@ bool regist_pin (int pin_num){
 
 bool set_direction (int pin_num, char* direction){
     std::fstream pin;
-    char* filepath;
+    char* filepath = new char [100];
     sprintf(filepath, "/sys/class/gpio/gpio%d/direction", pin_num);
     pin.open(filepath, std::ios::out);
     if (!pin.is_open()){
@@ -50,11 +50,12 @@ bool set_direction (int pin_num, char* direction){
     }
     pin << direction;
     pin.close();
+    delete filepath;
     return true;
 }
 bool set_value (int pin_num, int value){
     std::fstream pin;
-    char* filepath;
+    char* filepath = new char [100];
     sprintf(filepath, "/sys/class/gpio/gpio%d/value", pin_num);
     pin.open(filepath, std::ios::out);
     if (!pin.is_open()){
@@ -63,11 +64,12 @@ bool set_value (int pin_num, int value){
     }
     pin << value;
     pin.close();
+    delete filepath;
     return true;
 }
 int get_value (int pin_num){
     std::fstream pin;
-    char* filepath;
+    char* filepath = new char [100];
     int value;
     sprintf(filepath, "/sys/class/gpio/gpio%d/value", pin_num);
     pin.open(filepath, std::ios::in);
@@ -77,6 +79,6 @@ int get_value (int pin_num){
     }
     pin >> value;
     pin.close();
-    
+    delete filepath;
     return value;
 }
