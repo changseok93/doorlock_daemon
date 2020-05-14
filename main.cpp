@@ -1,15 +1,24 @@
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
+#include <cstdlib>
 #include <unistd.h>
 int main()
 {
     // create pin
-    std::ofstream regist_pin;
-    regist_pin.open("/sys/class/gpio/export");
-    regist_pin << "12";
-    regist_pin << "39";
-    regist_pin << "42";
+    std::fstream regist_pin;
+    regist_pin.open("/sys/class/gpio/export", std::ios::out);
+    if (!regist_pin.is_open()){
+        std::cout << "[sys] can not open file \"/sys/class/gpio/export\" please check again" << std::endl;
+        std::exit(1);
+    }
+
+    regist_pin << 12;
+    regist_pin.seekg(0);
+    regist_pin << 39;
+    regist_pin.seekg(0);
+    regist_pin << 42;
+    regist_pin.seekg(0);
     regist_pin.close();
 
     // set direction
