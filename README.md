@@ -7,7 +7,8 @@
 
 
 ## current state
-1. implement running code without any optimization
+1. <del>implement running code without any optimization</del>
+2. application level optimization complete
 
 ## how to use
 1. clone repository and go to directory
@@ -16,4 +17,4 @@
 use " sudo ./run & " for daemon process
 
 ## future work
-1. code optimization (sensor sampling rate ... )
+1. <del>code optimization (sensor sampling rate ... )</del>
