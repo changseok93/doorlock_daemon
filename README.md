@@ -8,7 +8,7 @@
 
 ## current state
 1. <del>implement running code without any optimization</del>
-2. application level optimization complete
+2. <del>application level optimization</del>
 
 ## how to use
 1. clone repository and go to directory
